@@ -1,0 +1,54 @@
+@import "bourbon/dist/bourbon";
+
+* { @include box-sizing(border-box) }
+
+// Colors from http://coolors.co/cc3910-f9fadd-d4ceac-8fa68e-332f29
+$color1: #F9FADD;
+$color2: #D4CEAC;
+$color3: #8FA68E;
+$color4: #332F29;
+$color5: #CC3910;
+
+h1, h2, h3 { margin: 5px 0 }
+
+body {
+	font-family: "ff-tisa-web-pro", serif;
+}
+
+.container {
+	max-width: 860px;
+	margin: 0 auto;
+	box-shadow: 0 0 1px #ccc;
+}
+
+.header {
+	overflow: hidden;
+	position: relative;
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	h1 {
+		text-align: center;
+		text-shadow: 0 0 1px white;
+	}
+
+	.cam {
+		margin-top: -3em;
+	}
+
+	.pick {
+		position: absolute;
+		bottom: 2em;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+
+}
+
+.news {
+	padding: 2em;
+}
