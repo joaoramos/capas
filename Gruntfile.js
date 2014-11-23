@@ -70,7 +70,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/styles',
+          cwd: '<%= yeoman.app %>/styles/sass',
           src: ['*.scss'],
           dest: '.tmp/styles',
           ext: '.css'
@@ -355,13 +355,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'sass'
+        'sass:development'
       ],
       test: [
         'sass'
       ],
       dist: [
-        'sass',
+        'sass:dist',
         'imagemin',
         'svgmin'
       ]
@@ -412,7 +412,7 @@ module.exports = function (grunt) {
     'clean:dist',
     'wiredep',
     'useminPrepare',
-    'sass',
+    'sass:dist',
     'concurrent:dist',
     'autoprefixer',
     'concat',
