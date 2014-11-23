@@ -25,28 +25,29 @@
     <div class="container">
 
       <header class="header">
-        
         <div class="cam">
           <img src="http://www.berlin.de/webcams/fsz/webcam.jpg">
         </div>
-
-        <div class="pick">
-          <ul>
-            <li ng-repeat="source in sources">
-              <a href="#" ng-click="grabNews({ url: source.url })"><h1>{{ source.name }}</h1></a>
-            </li>
-          </ul>
+        <div class="selection">
+          <a class="load-sources" href="#" ng-click="selectSource=true"><h1>{{ currentSource.name }}</h1></a>
         </div>
-
       </header>
 
-      <div class="news">
+      <div class="sources" ng-if="selectSource">
+        <ul>
+          <li ng-repeat="source in sources">
+            <a href="#" ng-click="fetchSource(source)"><strong>{{ source.name }}</strong></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="news" ng-init="fetchSource(currentSource)">
         <ul>
           <li ng-repeat="article in news">
             <article>
               <h2>{{ article.title }}</h2>
-              <span class="date">{{ article.publishedDate }} por {{ article.author }}</span>
-              <p>{{ article.contentSnippet }}</p>
+              <span ng-if="article.content | trim" class="date">{{ article.publishedDate }} por {{ article.author }}</span>
+              <p>{{ article.content | trim }}</p>
             </article>
           </li>
         </ul>

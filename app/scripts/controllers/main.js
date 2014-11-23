@@ -9,6 +9,7 @@
  */
 angular.module('nowApp')
   .controller('MainCtrl', ['$scope', 'NewsFactory', function ($scope, News) {
+
     $scope.sources = [
       {
       	name: 'Público',
@@ -28,18 +29,27 @@ angular.module('nowApp')
       }
     ];
 
-    $scope.grabNews = function(source) {
-      News.parseFeed(source).then(function(fetched) {
-        console.log(fetched.data.responseData.feed.entries);
-        $scope.news = fetched.data.responseData.feed.entries;
-      });
+    $scope.currentSource = $scope.sources[0];
+    $scope.selectSource = false;
 
+    $scope.fetchSource = function(source) {
+      News.parseFeed(source.url).then(function(fetched) {
+        // console.log(fetched.data.responseData.feed.entries);
+        $scope.news = fetched.data.responseData.feed.entries;
+        $scope.currentSource = source;
+        $scope.selectSource = false;
+      });
     };
   }])
+  .filter('trim', function() {
+    return function(text) {
+      return String(text).replace(/<[^>]+>/gm, '');
+    };
+  })
   .factory('NewsFactory', ['$http', function($http) {
     return {
-      parseFeed : function(source){
-        return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(source.url));
+      parseFeed : function(sourceUrl){
+        return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(sourceUrl));
       }
     };
   }]);
