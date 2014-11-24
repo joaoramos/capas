@@ -21,11 +21,15 @@ angular.module('nowApp')
       },
       {
       	name: 'Expresso',
-      	url: 'http://rss.feedsportal.com/c/32433/f/469897/index.rss'
+      	url: 'http://expresso.sapo.pt/static/rss/atualidade--arquivo_23412.xml'
       },
       {
       	name: 'Observador',
       	url: 'http://observador.pt/feed/'
+      },
+      {
+        name: 'Abola',
+        url: 'http://rss.feedsportal.com/c/32502/f/480420/index.rss'
       }
     ];
 
