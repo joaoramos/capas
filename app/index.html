@@ -22,29 +22,32 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="overlay" ng-if="selectSource" ng-click="selectSource=false"></div>
-
     <div class="container">
 
-      <header class="header">
+      <!-- berlin -->
+      <section class="berlin">
         <div class="cam">
           <img src="http://www.berlin.de/webcams/fsz/webcam.jpg">
         </div>
-        <div class="selection">
-          <a class="load-sources" href="#" ng-click="selectSource =! selectSource"><h1>{{ currentSource.name }}</h1></a>
+      </section>
+
+      <!-- portugal -->
+      <div class="portugal" ng-init="fetchSource(currentSource)">
+
+        <div class="dropdown">
+          <a href="#" ng-click="selectSource =! selectSource">
+            <h1>{{ currentSource.name }}</h1>
+          </a>
+          <ul class="sources" ng-if="selectSource">
+            <li ng-repeat="source in sources" ng-if="source!=currentSource">
+              <a href="" ng-click="fetchSource(source)">
+                <strong>{{ source.name }}</strong>
+              </a>
+            </li>
+          </ul>
         </div>
-      </header>
-
-      <div class="sources" ng-if="selectSource">
-        <ul>
-          <li ng-repeat="source in sources">
-            <a href="#" ng-click="fetchSource(source)"><strong>{{ source.name }}</strong></a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="news" ng-init="fetchSource(currentSource)">
-        <ul>
+      
+        <ul class="news">
           <li ng-repeat="article in news">
             <article>
               <h2>{{ article.title }}</h2>
