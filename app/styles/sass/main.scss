@@ -39,12 +39,12 @@ a {
 }
 
 .container {
-	max-width: 860px;
+	max-width: 480px;
 	margin: 0 auto;
 	box-shadow: 0 0 1px #ccc;
 }
 
-.header {
+.berlin {
 	z-index: 1;
 	overflow: hidden;
 	position: relative;
@@ -56,59 +56,30 @@ a {
 
 	h1 {
 		font-size: 16px;
+		font-weight: normal;
 		text-align: center;
 	}
 
 	.cam {
 		margin-top: -3em;
 	}
-
-	.selection {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		width: 100%;
-		text-align: center;
-
-		.load-sources {
-			position: relative;
-			display: inline-block;
-			text-align: center;
-			color: white;
-			border-radius: 4px;
-			padding: 7px 20px 13px;
-			border: 1px solid white;
-			margin-bottom: 2em;
-		}
-
-		h1 {
-			margin: 0;
-		}
-	}
 }
 
-.sources {
-	z-index: 100;
-	position: relative;
-
-	ul {
-		background: white;
-		text-align: center;
-	}
-
-	li {
-		margin-bottom: 1em;
-
-		&:last-child { margin-bottom: 0 }
-	}
-}
-
-.news {
+.portugal {
 	padding: 2em 3em;
 
-	ul {
-		padding: 0;
+	.dropdown {
+		border-radius: 4px;
+		padding: 7px 20px 13px;
+		border: 1px solid black;
+		margin-bottom: 1.5em;
+
+		a {
+			display: block;
+			color: black;
+		}
+
+		h1 { margin: 0 }
 	}
 
 	li {
@@ -131,4 +102,20 @@ a {
 	.copy {
 		margin-top: .75em;
 	}
+}
+
+.sources {
+	padding: 1em 0 0;
+
+	li {
+		margin-bottom: 1em;
+
+		strong { font-size: 32px }
+
+		&:last-child { margin-bottom: 0 }
+	}
+}
+
+.news {
+	padding: 0;
 }
