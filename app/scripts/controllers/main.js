@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name nowApp.controller:MainCtrl
+ * @name n.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the nowApp
+ * Controller of the n
  */
-angular.module('nowApp')
-  .controller('MainCtrl', ['$scope', 'NewsFactory', function ($scope, News) {
+angular.module('n')
+  .controller('MainCtrl', ['$scope', '$http', 'NewsFactory', function ($scope, $http, News) {
 
     $scope.sources = [
       {
@@ -33,6 +33,17 @@ angular.module('nowApp')
       }
     ];
 
+    $scope.weather = {}, $scope.main = {}, $scope.wind = {};
+
+    $http.get('http://api.openweathermap.org/data/2.5/weather?q=berlin,de&lang=pt')
+      .success(function(data, status, headers, config) {
+        $scope.weather = data.weather[0];
+        $scope.main = data.main;
+      })
+      .error(function(data, status, headers, config) {
+        alert('No weather information.');
+      });
+
     $scope.currentSource = $scope.sources[0];
     $scope.selectSource = false;
 
@@ -45,12 +56,39 @@ angular.module('nowApp')
       });
     };
   }])
+  .directive('silent', function() {
+    // Prevents anchor jumping
+    return {
+      restrict: 'A',
+      link: function(scope, elem, attrs) {
+        if(attrs.ngClick || attrs.href === '' || attrs.href === '#'){
+          elem.on('click', function(e){
+              e.preventDefault();
+          });
+        }
+      }
+   };
+  })
   .filter('trim', function() {
+    // Strips away all HTML
     return function(text) {
       return String(text).replace(/<[^>]+>/gm, '');
     };
   })
+  .filter('temp', function() {
+    // Gets Kelvin to Celsius and rounds the total
+    return function(text) {
+      return Math.round(text-273.15);
+    };
+  })
+  .filter('speed', function() {
+    // Gets mps to kmh
+    return function(text) {
+      return Math.round(text*3.6);
+    };
+  })
   .factory('NewsFactory', ['$http', function($http) {
+    // Runs RSS feeds through Google Feed API
     return {
       parseFeed : function(sourceUrl){
         return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(sourceUrl));

@@ -1,8 +1,8 @@
 <!doctype html>
-<html ng-app="nowApp" class="no-js">
+<html ng-app="n" class="no-js">
   <head>
     <meta charset="utf-8">
-    <title>nowApp</title>
+    <title>n</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -29,16 +29,22 @@
         <div class="cam">
           <img src="http://www.berlin.de/webcams/fsz/webcam.jpg">
         </div>
+        <div class="weather">
+          {{ weather.main }} ({{ weather.description }})<br />
+          {{ main.temp | temp }}˚C<br />
+        </div>
       </section>
 
       <!-- portugal -->
       <div class="portugal" ng-init="fetchSource(currentSource)">
 
+        <div class="overlay" ng-if="selectSource" ng-click="selectSource=false"></div>
+
         <div class="dropdown">
-          <a href="#" ng-click="selectSource =! selectSource">
+          <a href="#" silent ng-click="selectSource =! selectSource">
             <h1>{{ currentSource.name }}</h1>
           </a>
-          <ul class="sources" ng-if="selectSource">
+          <ul class="dropdown-sources" ng-if="selectSource">
             <li ng-repeat="source in sources" ng-if="source!=currentSource">
               <a href="" ng-click="fetchSource(source)">
                 <strong>{{ source.name }}</strong>
@@ -48,10 +54,12 @@
         </div>
       
         <ul class="news">
-          <li ng-repeat="article in news">
+          <li ng-repeat="article in news" ng-if="article.content | trim">
             <article>
-              <h2>{{ article.title }}</h2>
-              <span ng-if="article.content | trim" class="date">{{ article.publishedDate }} por {{ article.author }}</span>
+              <a href="{{ article.link }}" target="_blank" title="{{ article.title }}">
+                <h2>{{ article.title }}</h2>
+              </a>
+              <span class="date">{{ article.publishedDate }}</span>
               <p class="copy">{{ article.content | trim }}</p>
             </article>
           </li>
