@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('nowApp', [
+  .module('n', [
     'ngAnimate',
     'ngResource',
     'ngRoute',
