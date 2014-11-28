@@ -29,16 +29,19 @@
         <div class="cam">
           <img src="http://www.berlin.de/webcams/fsz/webcam.jpg">
         </div>
-        <div class="weather">
-          {{ weather.main }} ({{ weather.description }})<br />
-          {{ main.temp | temp }}˚C<br />
+        <div class="currently">
+          <div class="place">Berlim</div>
+          <div class="weather">
+            <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" />
+            <span>{{ main.temp | temp }}˚C</span>
+          </div>
         </div>
       </section>
 
       <!-- portugal -->
       <div class="portugal" ng-init="fetchSource(currentSource)">
 
-        <div class="overlay" ng-if="selectSource" ng-click="selectSource=false"></div>
+        <div class="overlay" ng-if="selectSource" ng-click="toggleSelectSource()"></div>
 
         <div class="dropdown">
           <a href="#" silent ng-click="selectSource =! selectSource">

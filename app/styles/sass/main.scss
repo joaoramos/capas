@@ -58,21 +58,31 @@ a {
 
 	.cam {
 		margin-top: -3em;
+
+		img {
+			display: block;
+			width: 100%;
+		}
 	}
 
-	img {
-		display: block;
-		width: 100%;
-	}
-
-	.weather {
-		padding: 1.5em 3em;
+	.currently {
+		overflow: hidden;
+		padding: 2em 3em;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		color: white;
-		background: rgba(black, .2);
+		background: rgba(black, .5);
+
+		img {
+			@include size(2em);
+			margin: 0 .5em -1em 0;
+			float: left;
+		}
+
+		.place { float: left }
+		.weather { float: right }
 	}
 }
 
@@ -96,6 +106,7 @@ a {
 	margin: 1.5em 0 3em;
 
 	a {
+		text-align: left;
 		display: block;
 		color: black;
 	}
