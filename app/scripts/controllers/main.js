@@ -10,6 +10,10 @@
 angular.module('n')
   .controller('MainCtrl', ['$scope', '$http', 'NewsFactory', function ($scope, $http, News) {
 
+    $scope.toggleSelectSource = function() {
+      $scope.selectSource = !$scope.selectSource;
+    }
+
     $scope.sources = [
       {
       	name: 'Público',
