@@ -14,6 +14,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="icon" type="image/png" href="/favicon.png">
     <script src="//use.typekit.net/tku2xoo.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
   </head>
@@ -24,21 +25,6 @@
 
     <div class="container">
 
-      <!-- berlin -->
-      <section class="berlin">
-        <div class="cam">
-          <img src="http://www.berlin.de/webcams/fsz/webcam.jpg">
-        </div>
-        <div class="currently">
-          <div class="place">Berlim</div>
-          <div class="weather">
-            <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" />
-            <span>{{ main.temp | temp }}˚C</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- portugal -->
       <div class="portugal" ng-init="fetchSource(currentSource)">
 
         <div class="overlay" ng-if="selectSource" ng-click="toggleSelectSource()"></div>

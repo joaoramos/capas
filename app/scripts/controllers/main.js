@@ -1,18 +1,11 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name n.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the n
- */
 angular.module('n')
   .controller('MainCtrl', ['$scope', '$http', 'NewsFactory', function ($scope, $http, News) {
 
     $scope.toggleSelectSource = function() {
       $scope.selectSource = !$scope.selectSource;
-    }
+    };
 
     $scope.sources = [
       {
@@ -37,23 +30,13 @@ angular.module('n')
       }
     ];
 
-    $scope.weather = {}, $scope.main = {}, $scope.wind = {};
-
-    $http.get('http://api.openweathermap.org/data/2.5/weather?q=berlin,de&lang=pt')
-      .success(function(data, status, headers, config) {
-        $scope.weather = data.weather[0];
-        $scope.main = data.main;
-      })
-      .error(function(data, status, headers, config) {
-        alert('No weather information.');
-      });
-
     $scope.currentSource = $scope.sources[0];
     $scope.selectSource = false;
 
     $scope.fetchSource = function(source) {
       News.parseFeed(source.url).then(function(fetched) {
-        // console.log(fetched.data.responseData.feed.entries);
+
+        // Get news data
         $scope.news = fetched.data.responseData.feed.entries;
         $scope.currentSource = source;
         $scope.selectSource = false;
@@ -61,6 +44,7 @@ angular.module('n')
     };
   }])
   .directive('silent', function() {
+
     // Prevents anchor jumping
     return {
       restrict: 'A',
@@ -74,27 +58,17 @@ angular.module('n')
    };
   })
   .filter('trim', function() {
+
     // Strips away all HTML
     return function(text) {
       return String(text).replace(/<[^>]+>/gm, '');
     };
   })
-  .filter('temp', function() {
-    // Gets Kelvin to Celsius and rounds the total
-    return function(text) {
-      return Math.round(text-273.15);
-    };
-  })
-  .filter('speed', function() {
-    // Gets mps to kmh
-    return function(text) {
-      return Math.round(text*3.6);
-    };
-  })
   .factory('NewsFactory', ['$http', function($http) {
+
     // Runs RSS feeds through Google Feed API
     return {
-      parseFeed : function(sourceUrl){
+      parseFeed: function(sourceUrl){
         return $http.jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(sourceUrl));
       }
     };

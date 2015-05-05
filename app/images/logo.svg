@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.1.1 (8761) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard" sketch:type="MSArtboardGroup">
+            <path d="M36.497,7.761 L26.369,7.761 C26.17,8.595 26.25,10.541 26.408,11.415 C27.124,11.614 28.435,11.812 29.388,11.892 L29.388,29.249 L28.911,29.249 L18.188,7.761 L7.94,7.761 C7.741,8.595 7.821,10.541 7.979,11.415 C8.615,11.614 9.767,11.812 10.601,11.892 L10.601,31.712 C9.926,31.831 8.695,32.109 8.099,32.347 C7.781,33.141 7.463,34.928 7.384,35.922 L18.505,35.922 C18.664,35.088 18.584,33.141 18.346,32.267 C17.552,32.029 16.321,31.791 15.367,31.712 L15.367,13.242 L15.844,13.242 L27.601,36.239 L33.757,36.239 L33.757,11.852 C34.472,11.812 35.822,11.614 36.418,11.415 C36.537,10.939 36.616,10.065 36.616,9.231 C36.616,8.635 36.576,8.079 36.497,7.761" id="Fill-1" fill="#8FA68E" sketch:type="MSShapeGroup"></path>
+            <path d="M40,42 L4,42 C2.9,42 2,41.1 2,40 L2,4 C2,2.9 2.9,2 4,2 L40,2 C41.1,2 42,2.9 42,4 L42,40 C42,41.1 41.1,42 40,42 L40,42 Z" id="Stroke-2" stroke="#FFFFFF" stroke-width="3" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>
