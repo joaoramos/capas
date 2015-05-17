@@ -1,0 +1,47 @@
+<div class="container" ng-init="getNews(sources[0])">
+
+  <header>
+    <img src="/icon.png" alt="n">
+  </header>
+
+  <div class="source-list" du-scrollspy="content">
+    <img class="icon" ng-src="{{ source.icon }}" alt="{{ source.name }}">
+    <select ng-model="source" ng-options="source as source.name for source in sources" ng-change="getNews(source)"></select>
+  </div>
+
+  <div id="content">
+    <div class="cover" ng-if="source.cover">
+      <img ng-src="{{ source.cover }}" alt="{{ source.name }}">
+    </div>
+
+    <ul class="news" ng-class="{ 'no-cover': !source.cover }">
+      <li ng-repeat="article in news" ng-if="article.content | trim">
+        <article>
+          
+          <a href="{{ article.link }}" target="_blank" title="{{ article.title }}">
+            <h2>
+              {{ article.title }}
+              <span class="categories" ng-if="article.categories">
+                <em ng-repeat="category in article.categories">
+                  {{ category }}
+                </em>
+              </span>
+            </h2> 
+          </a>
+          
+          <p class="meta" ng-if="article.author || article.publishedDate">
+            <span class="author" ng-if="article.author">{{ article.author }}, </span>
+            <span class="date" ng-if="article.publishedDate">{{ article.publishedDate | amDateFormat: 'LL' }}</span>
+          </p>
+          
+          <div class="content" toggle ng-if="article.contentSnippet">
+            <p class="snippet">{{ article.contentSnippet | trim }}</p>
+            <p class="full">{{ article.content | trim }}</p>
+          </div>
+                    
+        </article>
+      </li>
+    </ul>
+  </div>
+
+</div>
