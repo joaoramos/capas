@@ -1,3 +1,5 @@
+![Travis-CI](https://travis-ci.org/joaoramos/n.svg?branch=master)
+
 ##A tiny app that delivers fresh news from Portugal
 
 This is a tiny web app built with AngularJS that fetches RSS feeds parses them through the Google Feed API. It's a small delight for family and friends living abroad.
