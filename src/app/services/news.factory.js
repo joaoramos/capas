@@ -14,7 +14,7 @@ angular.module('n')
 
   			var today = (function() {
   				var currentDay = new Date();
-					var dd = currentDay.getDate()-1;
+					var dd = currentDay.getDate();
 					var mm = currentDay.getMonth()+1;
 					var yyyy = currentDay.getFullYear();
 
