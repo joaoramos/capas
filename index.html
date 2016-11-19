@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>n › Notícias</title>
+
+    <meta name="description" content="Notícias – Capas de jornais e revistas">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="n" />
+    <meta name="twitter:description" content="Notícias – Capas de jornais e revistas" />
+    <meta name="twitter:image" content="http://lab.joao.pt/n/icon.jpg" />
+    <meta name="twitter:url" content="http://lab.joao.pt/n" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="n" />
+    <meta property="og:title" content="n › Notícias" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://lab.joao.pt/n" />
+    <meta property="og:image" content="http://lab.joao.pt/n/icon.jpg" />
+    <meta property="og:description" content="Notícias – Capas de jornais e revistas" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      ul {
+        overflow: hidden;
+        list-style: none;
+      }
+
+      ul::before { content: '1 .column.full' }
+
+      @media screen and (min-width: 481px) {
+      	ul[data-columns]::before { content: '2 .column.half' }
+      }
+
+      @media screen and (min-width: 1680px) {
+      	ul[data-columns]::before { content: '3 .column.third' }
+      }
+
+      .column { float: left }
+
+      .full { width: 100vw }
+      .half { width: 50vw }
+      .third { width: 33.333vw }
+
+      img {
+        background: white;
+        box-shadow: 0 0 7px 0 #e6e6e6;
+        padding: 1em;
+        display: block;
+        width: 100%;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <ul data-columns>
+      <li><img src="http://www.sempreonline.net/images/capas/expresso/expresso-" alt="Expresso" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/publico/publico-" alt="Público" /></li>
+      <li><img src="http://www.quiosquejornais.pt/upload/capas/jornal-i-.jpg" alt="i" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/sol/sol-" alt="Sol" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/jornal-de-noticias/jornal-de-noticias-" alt="Jornal de Notícias" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/diario-de-noticias/diario-de-noticias-" alt="Diário de Notiícias" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/correio-da-manha/correio-da-manha-" alt="Correio da Manhã" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/visao/visao-" alt="Visão" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/sabado/sabado-" alt="Sábado" /></li>
+    </ul>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/salvattore/1.0.9/salvattore.min.js"></script>
+
+    <script>
+
+      /**
+       * Build current date
+       */
+
+      var dateObj = new Date();
+      var month = dateObj.getUTCMonth() + 1;
+      var day = dateObj.getUTCDate();
+      var year = dateObj.getUTCFullYear();
+
+      /**
+       * Grab dynamic covers
+       */
+
+      var covers = document.querySelectorAll('img[src*="sempreonline"]');
+
+      /**
+       * Append dates to covers
+       */
+
+      for (var cover in covers) {
+        if (covers.hasOwnProperty(cover)) {
+          covers[cover].src += day + '-' + month + '-' + year + '.jpg';
+        }
+      };
+
+    </script>
+
+  </body>
+</html>
