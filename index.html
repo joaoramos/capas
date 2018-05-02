@@ -69,14 +69,15 @@
   <body>
 
     <ul data-columns>
-      <li><img src="http://www.sempreonline.net/images/capas/publico/publico-" alt="Público" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/jornal-i/jornal-i-" alt="i" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/jornal-de-noticias/jornal-de-noticias-" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/diario-de-noticias/diario-de-noticias-" alt="Diário de Notiícias" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/expresso/expresso-" alt="Expresso" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/sol/sol-" alt="Sol" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/visao/visao-" alt="Visão" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/sabado/sabado-" alt="Sábado" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/publico/publico-DD-MM-YYYY.jpg" alt="Público" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/jornal-i/jornal-i-DD-MM-YYYY.jpg" alt="i" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/jornal-de-noticias/jornal-de-noticias-DD-MM-YYYY.jpg" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/diario-de-noticias/diario-de-noticias-DD-MM-YYYY.jpg" alt="Diário de Notiícias" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/diario-de-aveiro/diario-de-aveiro-YYYY-MM-DD-f65ccf.jpg" alt="Diário de Aveiro" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/expresso/expresso-DD-MM-YYYY.jpg" alt="Expresso" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/sol/sol-DD-MM-YYYY.jpg" alt="Sol" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/visao/visao-DD-MM-YYYY.jpg" alt="Visão" onload="loadCover(this);" /></li>
+      <li><img src="http://www.sempreonline.net/images/capas/sabado/sabado-DD-MM-YYYY.jpg" alt="Sábado" onload="loadCover(this);" /></li>
     </ul>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/salvattore/1.0.9/salvattore.min.js"></script>
@@ -99,7 +100,7 @@
        * Grab dynamic covers
        */
 
-      var covers = document.querySelectorAll('img[src*="sempreonline"]');
+      var covers = document.querySelectorAll('img');
 
       /**
        * Append dates to covers
@@ -107,7 +108,11 @@
 
       for (var cover in covers) {
         if (covers.hasOwnProperty(cover)) {
-          covers[cover].src += day + '-' + month + '-' + year + '.jpg';
+          var coverSchema = covers[cover].src;
+          coverSchema = coverSchema.replace('YYYY', year);
+          coverSchema = coverSchema.replace('MM', month);
+          coverSchema = coverSchema.replace('DD', day);
+          covers[cover].src = coverSchema;
         }
       };
 
