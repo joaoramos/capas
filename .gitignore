@@ -1,8 +1,0 @@
-node_modules
-.tmp
-.sass-cache
-bower_components
-src/styles/*.css
-src/styles/*.map
-.DS_Store
-
