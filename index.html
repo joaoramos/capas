@@ -35,25 +35,10 @@
       }
 
       ul {
-        overflow: hidden;
+        display: flex;
+        flex-flow: column wrap;
         list-style: none;
       }
-
-      ul::before { content: '1 .column.full' }
-
-      @media screen and (min-width: 481px) {
-      	ul[data-columns]::before { content: '2 .column.half' }
-      }
-
-      @media screen and (min-width: 1680px) {
-      	ul[data-columns]::before { content: '3 .column.third' }
-      }
-
-      .column { float: left }
-
-      .full { width: 100vw }
-      .half { width: 50vw }
-      .third { width: 33.333vw }
 
       img {
         background: white;
@@ -68,7 +53,7 @@
 
   <body>
 
-    <ul data-columns>
+    <ul>
       <li><img src="http://www.sempreonline.net/images/capas/publico/publico-DD-MM-YYYY.jpg" alt="Público" onload="loadCover(this);" /></li>
       <li><img src="http://www.sempreonline.net/images/capas/jornal-i/jornal-i-DD-MM-YYYY.jpg" alt="i" onload="loadCover(this);" /></li>
       <li><img src="http://www.sempreonline.net/images/capas/jornal-de-noticias/jornal-de-noticias-DD-MM-YYYY.jpg" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
@@ -82,8 +67,6 @@
       <li><img src="http://www.sempreonline.net/images/capas/visao/visao-DD-MM-YYYY.jpg" alt="Visão" onload="loadCover(this);" /></li>
       <li><img src="http://www.sempreonline.net/images/capas/sabado/sabado-DD-MM-YYYY.jpg" alt="Sábado" onload="loadCover(this);" /></li>
     </ul>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/salvattore/1.0.9/salvattore.min.js"></script>
 
     <script>
 
