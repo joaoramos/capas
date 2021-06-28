@@ -32,21 +32,28 @@
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        width: 100%;
       }
 
       ul {
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
         list-style: none;
       }
 
-      img {
+      li {
         background: white;
         box-shadow: 0 0 7px 0 #e6e6e6;
         padding: 1em;
-        display: none;
         width: 100%;
       }
+
+      @media screen and (min-width: 1024px) {
+        li { width: 50%; }
+      }
+
+      img { display: none; }
+
     </style>
 
   </head>
@@ -54,18 +61,17 @@
   <body>
 
     <ul>
-      <li><img src="http://www.sempreonline.net/images/capas/publico/publico-DD-MM-YYYY.jpg" alt="Público" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/jornal-i/jornal-i-DD-MM-YYYY.jpg" alt="i" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/jornal-de-noticias/jornal-de-noticias-DD-MM-YYYY.jpg" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/diario-de-noticias/diario-de-noticias-DD-MM-YYYY.jpg" alt="Diário de Notiícias" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/publico/publico-YYYY-MM-DD-4e0740.jpg" alt="Público" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/i/i-YYYY-MM-DD-ef2d12.jpg" alt="i" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/jornal-de-noticias/jornal-de-noticias-YYYY-MM-DD-d4735e.jpg" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/diario-de-noticias/diario-de-noticias-YYYY-MM-DD-4b2277.jpg" alt="Diário de Notiícias" onload="loadCover(this);" /></li>
       <li><img src="https://imgs.vercapas.com/covers/diario-de-aveiro/diario-de-aveiro-YYYY-MM-DD-f65ccf-x.jpg" alt="Diário de Aveiro" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/a-bola/a-bola-DD-MM-YYYY.jpg" alt="A Bola" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/record/record-DD-MM-YYYY.jpg" alt="Record" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/o-jogo/o-jogo-DD-MM-YYYY.jpg" alt="O Jogo" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/expresso/expresso-DD-MM-YYYY.jpg" alt="Expresso" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/sol/sol-DD-MM-YYYY.jpg" alt="Sol" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/visao/visao-DD-MM-YYYY.jpg" alt="Visão" onload="loadCover(this);" /></li>
-      <li><img src="http://www.sempreonline.net/images/capas/sabado/sabado-DD-MM-YYYY.jpg" alt="Sábado" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/a-bola/a-bola-YYYY-MM-DD-6b51d4.jpg" alt="A Bola" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/record/record-YYYY-MM-DD-3fdba3.jpg" alt="Record" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/o-jogo/o-jogo-YYYY-MM-DD-8527a8.jpg" alt="O Jogo" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-MM-DD-2c6242.jpg" alt="Expresso" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-MM-DD-19581e.jpg" alt="Visão" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-MM-DD-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" /></li>
     </ul>
 
     <script>
