@@ -69,12 +69,41 @@
       <li><img src="https://imgs.vercapas.com/covers/a-bola/a-bola-YYYY-MM-DD-6b51d4.jpg" alt="A Bola" onload="loadCover(this);" /></li>
       <li><img src="https://imgs.vercapas.com/covers/record/record-YYYY-MM-DD-3fdba3.jpg" alt="Record" onload="loadCover(this);" /></li>
       <li><img src="https://imgs.vercapas.com/covers/o-jogo/o-jogo-YYYY-MM-DD-8527a8.jpg" alt="O Jogo" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-MM-DD-2c6242.jpg" alt="Expresso" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-MM-DD-19581e.jpg" alt="Visão" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-MM-DD-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-LM-LF-2c6242.jpg" alt="Expresso" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-LM-LT-19581e.jpg" alt="Visão" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-LM-LT-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" /></li>
     </ul>
 
     <script>
+
+      /**
+       * Ref. https://stackoverflow.com/a/59145062
+       * @param {Date} date - the initial Date
+       * @param {('Mon'|'Tue'|'Wed'|'Thurs'|'Fri'|'Sat'|'Sun')} day - the day of week
+       * @returns {Date} - the Date of last occurrence or same Date if day param is invalid
+       */
+
+      function getLastDayOccurence (date, day) {
+        const d = new Date(date.getTime());
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        if (days.includes(day)) {
+          const modifier = (d.getDay() + days.length - days.indexOf(day)) % 7 || 7;
+          d.setDate(d.getDate() - modifier);
+        }
+        return d;
+      }
+
+      /**
+       * Build date for last Thursday and Friday
+       */
+
+      var lastThursday = getLastDayOccurence(new Date(), 'Thu').getUTCDate();
+      var lastFriday = getLastDayOccurence(new Date(), 'Fri').getUTCDate();
+      var lastMonth = getLastDayOccurence(new Date(), 'Thu').getUTCMonth() + 1;
+
+      if (lastThursday<10) { lastThursday = '0' + lastThursday }
+      if (lastFriday<10) { lastFriday = '0' + lastFriday }
+      if (lastMonth<10) { lastMonth = '0' + lastMonth }
 
       /**
        * Build current date
@@ -104,6 +133,9 @@
           coverSchema = coverSchema.replace('YYYY', year);
           coverSchema = coverSchema.replace('MM', month);
           coverSchema = coverSchema.replace('DD', day);
+          coverSchema = coverSchema.replace('LM', lastMonth);
+          coverSchema = coverSchema.replace('LT', lastThursday);
+          coverSchema = coverSchema.replace('LF', lastFriday);
           covers[cover].src = coverSchema;
         }
       };
