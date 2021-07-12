@@ -61,17 +61,17 @@
   <body>
 
     <ul>
-      <li><img src="https://imgs.vercapas.com/covers/publico/publico-YYYY-MM-DD-4e0740.jpg" alt="Público" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/i/i-YYYY-MM-DD-ef2d12.jpg" alt="i" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/jornal-de-noticias/jornal-de-noticias-YYYY-MM-DD-d4735e.jpg" alt="Jornal de Notícias" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/diario-de-noticias/diario-de-noticias-YYYY-MM-DD-4b2277.jpg" alt="Diário de Notiícias" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/diario-de-aveiro/diario-de-aveiro-YYYY-MM-DD-f65ccf-x.jpg" alt="Diário de Aveiro" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/a-bola/a-bola-YYYY-MM-DD-6b51d4.jpg" alt="A Bola" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/record/record-YYYY-MM-DD-3fdba3.jpg" alt="Record" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/o-jogo/o-jogo-YYYY-MM-DD-8527a8.jpg" alt="O Jogo" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-LM-LF-2c6242.jpg" alt="Expresso" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-LM-LT-19581e.jpg" alt="Visão" onload="loadCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-LM-LT-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/publico/publico-YYYY-MM-DD-4e0740.jpg" alt="Público" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/i/i-YYYY-MM-DD-ef2d12.jpg" alt="i" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/jornal-de-noticias/jornal-de-noticias-YYYY-MM-DD-d4735e.jpg" alt="Jornal de Notícias" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/diario-de-noticias/diario-de-noticias-YYYY-MM-DD-4b2277.jpg" alt="Diário de Notiícias" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/diario-de-aveiro/diario-de-aveiro-YYYY-MM-DD-f65ccf-x.jpg" alt="Diário de Aveiro" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/a-bola/a-bola-YYYY-MM-DD-6b51d4.jpg" alt="A Bola" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/record/record-YYYY-MM-DD-3fdba3.jpg" alt="Record" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/o-jogo/o-jogo-YYYY-MM-DD-8527a8.jpg" alt="O Jogo" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-LM-LF-2c6242.jpg" alt="Expresso" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-LM-LT-19581e.jpg" alt="Visão" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-LM-LT-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" onerror="clearCover(this);" /></li>
     </ul>
 
     <script>
@@ -94,15 +94,15 @@
       }
 
       /**
-       * Build date for last Thursday and Friday
+       * Build date for last Thursday and Saturday
        */
 
       var lastThursday = getLastDayOccurence(new Date(), 'Thu').getUTCDate();
-      var lastFriday = getLastDayOccurence(new Date(), 'Fri').getUTCDate();
+      var lastSaturday = getLastDayOccurence(new Date(), 'Sat').getUTCDate();
       var lastMonth = getLastDayOccurence(new Date(), 'Thu').getUTCMonth() + 1;
 
       if (lastThursday<10) { lastThursday = '0' + lastThursday }
-      if (lastFriday<10) { lastFriday = '0' + lastFriday }
+      if (lastSaturday<10) { lastSaturday = '0' + lastSaturday }
       if (lastMonth<10) { lastMonth = '0' + lastMonth }
 
       /**
@@ -135,7 +135,7 @@
           coverSchema = coverSchema.replace('DD', day);
           coverSchema = coverSchema.replace('LM', lastMonth);
           coverSchema = coverSchema.replace('LT', lastThursday);
-          coverSchema = coverSchema.replace('LF', lastFriday);
+          coverSchema = coverSchema.replace('LF', lastSaturday);
           covers[cover].src = coverSchema;
         }
       };
@@ -146,6 +146,10 @@
 
        var loadCover = function(cover) {
          cover.style.display = 'block';
+       }
+
+       var clearCover = function(cover) {
+         cover.parentElement.style.display = 'none';
        }
 
     </script>
