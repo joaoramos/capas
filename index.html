@@ -52,8 +52,6 @@
         li { width: 50%; }
       }
 
-      img { display: none; }
-
     </style>
 
   </head>
@@ -61,98 +59,19 @@
   <body>
 
     <ul>
-      <li><img src="https://imgs.vercapas.com/covers/publico/2022/publico-YYYY-MM-DD-68907d38.jpg" alt="Público" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/i/2022/i-YYYY-MM-DD-d93c6f8a.jpg" alt="i" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/jornal-de-noticias/2022/jornal-de-noticias-YYYY-MM-DD-e2fd0073.jpg" alt="Jornal de Notícias" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/diario-de-noticias/diario-de-noticias-YYYY-MM-DD-4b2277.jpg" alt="Diário de Notiícias" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/diario-de-aveiro/diario-de-aveiro-YYYY-MM-DD-f65ccf-x.jpg" alt="Diário de Aveiro" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/a-bola/2022/a-bola-YYYY-MM-DD-77cc327d.jpg" alt="A Bola" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/record/2022/record-YYYY-MM-DD-768d31f4.jpg" alt="Record" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/o-jogo/o-jogo-YYYY-MM-DD-8527a8.jpg" alt="O Jogo" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/expresso/expresso-YYYY-LM-LF-2c6242.jpg" alt="Expresso" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/visao/visao-YYYY-LM-LT-19581e.jpg" alt="Visão" onload="loadCover(this);" onerror="clearCover(this);" /></li>
-      <li><img src="https://imgs.vercapas.com/covers/sabado/sabado-YYYY-LM-LT-4a44dc.jpg" alt="Sábado" onload="loadCover(this);" onerror="clearCover(this);" /></li>
+      <li><img src="https://get.joao.pt/capas/publico.jpg" alt="Público" /></li>
+      <li><img src="https://get.joao.pt/capas/i.jpg" alt="i" /></li>
+      <li><img src="https://get.joao.pt/capas/jornal-de-noticias.jpg" alt="Jornal de Notícias" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-noticias.jpg" alt="Diário de Notiícias" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-aveiro.jpg" alt="Diário de Aveiro" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-viseu.jpg" alt="Diário de Viseu" /></li>
+      <li><img src="https://get.joao.pt/capas/a-bola.jpg" alt="A Bola" /></li>
+      <li><img src="https://get.joao.pt/capas/record.jpg" alt="Record" /></li>
+      <li><img src="https://get.joao.pt/capas/o-jogo.jpg" alt="O Jogo" /></li>
+      <li><img src="https://get.joao.pt/capas/expresso.jpg" alt="Expresso" /></li>
+      <li><img src="https://get.joao.pt/capas/visao.jpg" alt="Visão" /></li>
+      <li><img src="https://get.joao.pt/capas/sabado.jpg" alt="Sábado" /></li>
     </ul>
-
-    <script>
-
-      /**
-       * Ref. https://stackoverflow.com/a/59145062
-       * @param {Date} date - the initial Date
-       * @param {('Mon'|'Tue'|'Wed'|'Thurs'|'Fri'|'Sat'|'Sun')} day - the day of week
-       * @returns {Date} - the Date of last occurrence or same Date if day param is invalid
-       */
-
-      function getLastDayOccurence (date, day) {
-        const d = new Date(date.getTime());
-        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        if (days.includes(day)) {
-          const modifier = (d.getDay() + days.length - days.indexOf(day)) % 7 || 7;
-          d.setDate(d.getDate() - modifier);
-        }
-        return d;
-      }
-
-      /**
-       * Build date for last Thursday and Saturday
-       */
-
-      var lastThursday = getLastDayOccurence(new Date(), 'Thu').getUTCDate();
-      var lastSaturday = getLastDayOccurence(new Date(), 'Sat').getUTCDate();
-      var lastMonth = getLastDayOccurence(new Date(), 'Thu').getUTCMonth() + 1;
-
-      if (lastThursday<10) { lastThursday = '0' + lastThursday }
-      if (lastSaturday<10) { lastSaturday = '0' + lastSaturday }
-      if (lastMonth<10) { lastMonth = '0' + lastMonth }
-
-      /**
-       * Build current date
-       */
-
-      var dateObj = new Date();
-      var month = dateObj.getUTCMonth() + 1;
-      var day = dateObj.getUTCDate();
-      var year = dateObj.getUTCFullYear();
-
-      if (day<10) { day = '0' + day }
-      if (month<10) { month = '0' + month }
-
-      /**
-       * Grab dynamic covers
-       */
-
-      var covers = document.querySelectorAll('img');
-
-      /**
-       * Append dates to covers
-       */
-
-      for (var cover in covers) {
-        if (covers.hasOwnProperty(cover)) {
-          var coverSchema = covers[cover].src;
-          coverSchema = coverSchema.replace('YYYY', year);
-          coverSchema = coverSchema.replace('MM', month);
-          coverSchema = coverSchema.replace('DD', day);
-          coverSchema = coverSchema.replace('LM', lastMonth);
-          coverSchema = coverSchema.replace('LT', lastThursday);
-          coverSchema = coverSchema.replace('LF', lastSaturday);
-          covers[cover].src = coverSchema;
-        }
-      };
-
-      /**
-       * Load covers
-       */
-
-       var loadCover = function(cover) {
-         cover.style.display = 'block';
-       }
-
-       var clearCover = function(cover) {
-         cover.parentElement.style.display = 'none';
-       }
-
-    </script>
 
   </body>
 </html>
