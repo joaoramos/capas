@@ -1,0 +1,15 @@
+{
+    "background_color": "white",
+    "description": "Capas de jornais e revistas",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "350x350",
+        "type": "image/png"
+      }
+    ],
+    "name": "Capas",
+    "short_name": "Capas",
+    "start_url": "/index.html"
+  }
