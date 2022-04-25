@@ -36,6 +36,17 @@
         width: 100%;
       }
 
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      nav a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        color: #999;
+      }
+
       ul {
         display: flex;
         flex-flow: row wrap;
@@ -55,20 +66,57 @@
 
       img {
         pointer-events: none;
+        display: block;
+        width: 100%;
       }
+
+      /* Horizontal view */
+
+      .horizontal ul {
+          width: 450rem;
+          margin: 3vw 0 5vw 5vw; 
+          overflow-y: hidden;
+          overflow-x: auto;
+      }
+
+      .horizontal li {
+          box-shadow: none;
+          display: block;
+          float: left;
+          width: 80vw;
+          padding: 0;
+          margin-left: 2.5rem;
+          margin-right: 2.5rem;
+          margin-top: 2rem;
+      }
+
+      @media screen and (min-width: 1024px) {
+        .horizontal li { width: 40rem }
+      }
+      
+      .horizontal img {
+          box-shadow: rgba(149, 157, 165, 0.5) 0px 0px 24px;
+          padding: 3rem;
+      }
+
     </style>
 
   </head>
 
   <body>
+
+    <nav>
+      <a href="#" class="view">❏ Flip view</a>
+    </nav>
+
     <ul>
       <li><img src="https://get.joao.pt/capas/publico.jpg" alt="Público" /></li>
       <li><img src="https://get.joao.pt/capas/i.jpg" alt="i" /></li>
       <li><img src="https://get.joao.pt/capas/jornal-de-noticias.jpg" alt="Jornal de Notícias" /></li>
       <li><img src="https://get.joao.pt/capas/diario-de-noticias.jpg" alt="Diário de Notiícias" /></li>
       <li><img src="https://get.joao.pt/capas/expresso.jpg" alt="Expresso" /></li>
-      <li><img src="https://get.joao.pt/capas/diario-de-aveiro.jpg" alt="Diário de Aveiro" /></li>
-      <li><img src="https://get.joao.pt/capas/diario-de-viseu.jpg" alt="Diário de Viseu" /></li>
+      <!-- <li><img src="https://get.joao.pt/capas/diario-de-aveiro.jpg" alt="Diário de Aveiro" /></li> -->
+      <!-- <li><img src="https://get.joao.pt/capas/diario-de-viseu.jpg" alt="Diário de Viseu" /></li> -->
       <li><img src="https://get.joao.pt/capas/a-bola.jpg" alt="A Bola" /></li>
       <li><img src="https://get.joao.pt/capas/record.jpg" alt="Record" /></li>
       <li><img src="https://get.joao.pt/capas/o-jogo.jpg" alt="O Jogo" /></li>
@@ -77,10 +125,26 @@
     </ul>
 
     <script type="text/javascript">
+      
+      // Prevents right clicks
       const covers = document.getElementsByTagName('img');
       for (let i = 0; i < covers.length; i++) {
         covers[i].addEventListener('contextmenu', event => event.preventDefault());
       }
+
+      // Flips view
+      const view = document.querySelector('.view');
+      view.addEventListener('click', function(e) {
+        document.body.classList.toggle('horizontal');
+        e.preventDefault();
+      });
+
+      // Hide nav.
+      window.onload = function() {
+        window.scrollBy(0,50);
+      }
+
+
     </script>
   </body>
 </html>
