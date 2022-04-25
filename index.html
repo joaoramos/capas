@@ -16,7 +16,7 @@
 
     <!-- Facebook -->
     <meta property="og:site_name" content="Capas" />
-    <meta property="og:title" content="Capas de jornais e revistas" />
+    <meta property="og:title" content="Capas" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://capas.joao.pt" />
     <meta property="og:image" content="https://capas.joao.pt/icon.png" />
@@ -52,6 +52,10 @@
       @media screen and (min-width: 1024px) {
         li { width: 50%; }
       }
+
+      img {
+        pointer-events: none;
+      }
     </style>
 
   </head>
@@ -71,5 +75,12 @@
       <li><img src="https://get.joao.pt/capas/visao.jpg" alt="Visão" /></li>
       <li><img src="https://get.joao.pt/capas/sabado.jpg" alt="Sábado" /></li>
     </ul>
+
+    <script type="text/javascript">
+      const covers = document.getElementsByTagName('img');
+      for (let i = 0; i < covers.length; i++) {
+        covers[i].addEventListener('contextmenu', event => event.preventDefault());
+      }
+    </script>
   </body>
 </html>
