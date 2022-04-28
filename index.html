@@ -126,10 +126,15 @@
 
     <script type="text/javascript">
       
-      // Prevents right clicks
       const covers = document.getElementsByTagName('img');
+
       for (let i = 0; i < covers.length; i++) {
+
+        // Prevents right clicks
         covers[i].addEventListener('contextmenu', event => event.preventDefault());
+
+        // Appends date and time to images
+        covers[i].src = covers[i].src + '?' + (new Date().getTime() + i);
       }
 
       // Flips view
