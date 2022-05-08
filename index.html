@@ -47,6 +47,14 @@
         color: #999;
       }
 
+      nav a:after {
+        content: 'fila';
+      }
+
+      .horizontal nav a:after {
+        content: 'grelha';
+      }
+
       ul {
         display: flex;
         flex-flow: row wrap;
@@ -73,8 +81,8 @@
       /* Horizontal view */
 
       .horizontal ul {
-          width: 450rem;
-          margin: 3vw 0 3vw 1vw; 
+          width: 540rem;
+          margin: 0; 
           overflow-y: hidden;
           overflow-x: auto;
       }
@@ -85,8 +93,8 @@
           float: left;
           width: 90vw;
           padding: 0;
-          margin-left: 2.5rem;
-          margin-right: 2.5rem;
+          margin-left: 1.5rem;
+          margin-right: 1.5rem;
           margin-top: 2rem;
       }
 
@@ -106,7 +114,7 @@
   <body>
 
     <nav>
-      <a href="#" class="view">Mudar vista</a>
+      <a href="#" class="view">Ver em </a>
     </nav>
 
     <ul>
