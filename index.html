@@ -37,35 +37,98 @@
       }
 
       body {
+        position: relative;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       }
 
-      nav {
-        overflow: hidden;
-      }
-
-      nav a {
-        width: auto;
-        float: left;
-        padding: 1rem;
+      .nav-toggle {
+        transition: box-shadow .2s ease-in-out;
+        z-index: 2;
+        text-decoration: none;
         color: #999;
+        background: white;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        line-height: 150%;
+        font-size: 2rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 3rem;
+        box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+        text-align: center;
       }
 
-      nav a.view:after {
+      .nav-toggle:hover,
+      .nav-toggle:active {
+        transition: box-shadow .2s ease-in-out;
+        box-shadow: 0 0 7px rgb(0 0 0 / 35%);
+      }
+
+      .nav-toggle:after {
+        content: '☰';
+      }
+      
+      .open .nav-toggle:after {
+        content: '✕';
+        font-size: 1.5rem;
+        line-height: 230%;
+      }
+
+      .open .nav-toggle {
+        transition: box-shadow .2s ease-in-out;
+        box-shadow: none;
+      }
+
+      .nav-container {
+        padding: 2rem 5rem 4rem 4rem;
+        display: none;
+        z-index: 1;
+        overflow: hidden;
+        position: fixed;
+        background: white;
+        top: 0;
+        right: 0;
+        max-width: 100vw;
+        box-shadow: 0 0 5px rgb(0 0 0 / 30%);
+      }
+
+      @media screen and (min-width: 512px) {
+        .nav-container { max-width: 490px }
+      }
+
+      .open .nav-container {
+        display: block;
+      }
+
+      .nav-container ul {
+        list-style: none;
+      }
+
+      .nav-container li {
+        margin-top: .5rem;
+      }
+
+      .nav-container a {
+        color: #999;
+        display: block;
+      }
+
+      .nav-container a.view:after {
         content: 'fila';
       }
 
-      .horizontal nav a.view:after {
+      .horizontal .nav-container a.view:after {
         content: 'grelha';
       }
 
-      ul {
+      .covers {
         display: flex;
         flex-flow: row wrap;
         list-style: none;
       }
 
-      li {
+      .covers li {
         background: white;
         box-shadow: 0 0 7px 0 #e6e6e6;
         padding: 1em;
@@ -73,7 +136,7 @@
       }
 
       @media screen and (min-width: 1024px) {
-        li { width: 50%; }
+        .covers li { width: 50%; }
       }
 
       img {
@@ -91,7 +154,7 @@
           overflow-x: auto;
       }
 
-      .horizontal li {
+      .horizontal .covers li {
           box-shadow: none;
           display: block;
           float: left;
@@ -103,7 +166,7 @@
       }
 
       @media screen and (min-width: 790px) {
-        .horizontal li { width: 40rem }
+        .horizontal .covers li { width: 40rem }
       }
       
       .horizontal img {
@@ -119,12 +182,24 @@
 
   <body>
 
-    <nav>
-      <a data-tf-popup="qkhEHuJM" data-tf-opacity="100" data-tf-hide-headers data-tf-size="70" data-tf-iframe-props="title=Capas" data-tf-transitive-search-params style="color:#999999;text-decoration:underline;font-size:16px;cursor:pointer;">Subscrever por email</a><script src="//embed.typeform.com/next/embed.js"></script>
-      <a href="#" class="view">Ver em </a>
-    </nav>
+    <a href="#" class="nav-toggle" onclick="return false;"></a>
 
-    <ul>
+    <div class="nav-container">
+      <h1>Capas de jornais e revistas Portugueses, atualizadas todas as manhãs</h1>
+      <ul>
+        <li>
+          <a href="#" class="view">Ver em </a>
+        </li>
+        <li>
+          <a href="mailto:hello@joao.pt?subject=Capas (recomendação)">Recomendar jornal ou revista</a>
+        </li>
+        <li>
+          <a data-tf-popup="qkhEHuJM" data-tf-opacity="100" data-tf-hide-headers data-tf-size="70" data-tf-iframe-props="title=Capas" data-tf-transitive-search-params style="color:#999999;text-decoration:underline;font-size:16px;cursor:pointer;">Subscrever por email</a><script src="//embed.typeform.com/next/embed.js"></script>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="covers">
       <li><img src="https://get.joao.pt/capas/publico.jpg" alt="Público" /></li>
       <li><img src="https://get.joao.pt/capas/i.jpg" alt="i" /></li>
       <li><img src="https://get.joao.pt/capas/jornal-de-noticias.jpg" alt="Jornal de Notícias" /></li>
@@ -152,17 +227,20 @@
         covers[i].src = covers[i].src + '?' + (new Date().getTime() + i);
       }
 
-      // Flips view
+      // Toggles nav
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.nav-container');
+      toggle.addEventListener('click', function(e) {
+        document.body.classList.toggle('open');
+        e.preventDefault();
+      });
+
+      // Toggles view
       const view = document.querySelector('.view');
       view.addEventListener('click', function(e) {
         document.body.classList.toggle('horizontal');
         e.preventDefault();
       });
-
-      // Hide nav.
-      window.onload = function() {
-        window.scrollBy(0,50);
-      }
 
 
     </script>
