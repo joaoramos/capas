@@ -48,14 +48,25 @@
         top: 1rem;
         right: 1rem;
         cursor: pointer;
-        padding: 1.6rem 1.1rem 1.1rem;
+        padding: 1.6rem 1rem 1rem;
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 3rem;
-        transition: box-shadow .2s ease-in-out;
         z-index: 2;
         background: white;
         box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+        transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      }
+
+      .nav-toggle:hover {
+        box-shadow: 0 0 10px rgb(0 0 0 / 30%);
+        transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      }
+
+      .nav-toggle:hover span,
+      .nav-toggle:hover span:before,
+      .nav-toggle:hover span:after {
+        background: #666;
         transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1.000);
       }
 
@@ -70,6 +81,11 @@
         position: absolute;
         display: inline-block;
         content: '';
+      }
+
+      .open .nav-toggle:hover span:before,
+      .open .nav-toggle:hover span:after {
+        background: #666;
       }
       
       .nav-toggle span:before {
@@ -207,7 +223,7 @@
 
   <body>
 
-    <a href="#" class="nav-toggle umami--click--menu" onclick="return false;">
+    <a href="#" tabindex="0" class="nav-toggle umami--click--menu" onclick="return false;">
       <span></span>
     </a>
 
@@ -215,13 +231,13 @@
       <h1>Capas de jornais e revistas Portugueses, atualizadas todas as manhãs</h1>
       <ul>
         <li>
-          <a href="#" class="view umami--click--view">Ver em </a>
+          <a href="#" tabindex="1" class="view umami--click--view">Ver em </a>
         </li>
         <li>
-          <a href="mailto:hello@joao.pt?subject=Capas (recomendação)" class="umami--click--recommend">Recomendar jornal ou revista</a>
+          <a href="mailto:hello@joao.pt?subject=Capas (recomendação)" tabindex="2" class="umami--click--recommend">Recomendar jornal ou revista</a>
         </li>
         <li>
-          <a data-tf-popup="qkhEHuJM" data-tf-opacity="100" data-tf-hide-headers data-tf-size="70" data-tf-iframe-props="title=Capas" data-tf-transitive-search-params style="color:#999999;text-decoration:underline;font-size:16px;cursor:pointer;">Subscrever por email</a><script src="//embed.typeform.com/next/embed.js"></script>
+          <a tabindex="3" data-tf-popup="qkhEHuJM" data-tf-opacity="100" data-tf-hide-headers data-tf-size="70" data-tf-iframe-props="title=Capas" data-tf-transitive-search-params style="color:#999999;text-decoration:underline;font-size:16px;cursor:pointer;">Subscrever por email</a><script src="//embed.typeform.com/next/embed.js"></script>
         </li>
       </ul>
     </div>
