@@ -253,18 +253,18 @@
     </div>
 
     <ul class="covers">
-      <li><img src="https://www.dropbox.com/scl/fi/5w1ll0voks84x409b7p8s/publico.jpg?rlkey=d5n6eukicsuusofmm9aewrp8k&st=bpw63el1&raw=1" alt="Público" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/3zw4qyfm2syh4br8u9mmn/i.jpg?rlkey=qqurjk807o5eycdkfjai7side&st=xq74ji89&raw=1" alt="i" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/eoznm18kih2t32gsjk1u1/jornal-de-noticias.jpg?rlkey=oacamzvnl7a5920ymqomicalo&st=exl786kb&raw=1" alt="Jornal de Notícias" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/53i446a1cpadn8hgwuw8j/diario-de-noticias.jpg?rlkey=ktcx6pkj5hlt7ngvwt6ufdpnf&st=kg0y74wv&raw=1" alt="Diário de Notiícias" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/yzyrnyyyc9t830ef4xt0c/expresso.jpg?rlkey=llror2j8k0uepz0hea2ksvaxf&st=y8ff2dw0&raw=1" alt="Expresso" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/0pq2he8prxs59ebhbdvo5/diario-de-aveiro.jpg?rlkey=bs36zgdk24yxmjm2gtteqxks7&st=42782gj5&raw=1" alt="Diário de Aveiro" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/owi5l3mp26z6xxslmy67h/diario-de-viseu.jpg?rlkey=cp13ixjixdbww59ehp7wzfl8n&st=2pomsm9h&raw=1" alt="Diário de Viseu" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/8avestbdluv2os804wrc4/a-bola.jpg?rlkey=inruzpsydvve27c0aipxamhu8&e=2&st=1jpqivuy&raw=1" alt="A Bola" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/ikawcn5rvn0pqs4q2pfgy/record.jpg?rlkey=19suhd5omdqvhttuwm2ptarbc&st=hdw9j6bu&raw=1" alt="Record" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/i4ionhg44vyymcky0zxoe/o-jogo.jpg?rlkey=6rmlrjj82z1trks7avsnw9fkp&st=13o1lqxl&raw=1" alt="O Jogo" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/1dxe3m38s8crrftluxhnd/visao.jpg?rlkey=2xms0hzq7djr27sz23bnt6zvm&st=x8gvkzgm&raw=1" alt="Visão" /></li>
-      <li><img src="https://www.dropbox.com/scl/fi/uyey9pmj1a3czctn8uf85/sabado.jpg?rlkey=z5qq6w20uvlnulzcrns7u53b2&st=8fuf4tik&raw=1" alt="Sábado" /></li>
+      <li><img src="https://get.joao.pt/capas/publico.jpg" alt="Público" /></li>
+      <li><img src="https://get.joao.pt/capas/i.jpg" alt="i" /></li>
+      <li><img src="https://get.joao.pt/capas/jornal-de-noticias.jpg" alt="Jornal de Notícias" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-noticias.jpg" alt="Diário de Notiícias" /></li>
+      <li><img src="https://get.joao.pt/capas/expresso.jpg" alt="Expresso" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-aveiro.jpg" alt="Diário de Aveiro" /></li>
+      <li><img src="https://get.joao.pt/capas/diario-de-viseu.jpg" alt="Diário de Viseu" /></li>
+      <li><img src="https://get.joao.pt/capas/a-bola.jpg" alt="A Bola" /></li>
+      <li><img src="https://get.joao.pt/capas/record.jpg" alt="Record" /></li>
+      <li><img src="https://get.joao.pt/capas/o-jogo.jpg" alt="O Jogo" /></li>
+      <li><img src="https://get.joao.pt/capas/visao.jpg" alt="Visão" /></li>
+      <li><img src="https://get.joao.pt/capas/sabado.jpg" alt="Sábado" /></li>
     </ul>
 
     <script type="text/javascript">
@@ -277,7 +277,7 @@
         covers[i].addEventListener('contextmenu', event => event.preventDefault());
 
         // Appends date and time to images
-        covers[i].src = covers[i].src + '&' + (new Date().getTime() + i);
+        covers[i].src = covers[i].src + '?' + (new Date().getTime() + i);
       }
 
       // Toggles nav
